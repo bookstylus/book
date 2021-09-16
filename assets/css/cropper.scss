@@ -1,0 +1,208 @@
+.cropper {
+  &-container {
+    @apply relative;
+    direction: ltr;
+    font-size: 0;
+    line-height: 0;
+    touch-action: none;
+    user-select: none;
+
+    img {
+      display: block;
+      height: 100%;
+      image-orientation: 0deg;
+      max-height: none !important;
+      max-width: none !important;
+      min-height: 0 !important;
+      min-width: 0 !important;
+      width: 100%;
+    }
+  }
+
+  &-wrap-box,
+  &-canvas,
+  &-drag-box,
+  &-crop-box,
+  &-modal {
+    @apply absolute inset-0;
+  }
+
+  &-wrap-box,
+  &-canvas {
+    @apply overflow-hidden;
+  }
+
+  &-drag-box {
+    @apply bg-white opacity-0;
+  }
+
+  &-modal {
+    @apply bg-black/50;
+  }
+
+  &-view-box {
+    @apply block border border-blue-500 overflow-hidden w-full h-full;
+  }
+
+  &-dashed {
+    @apply absolute border-0 border-dashed border-gray-300/50;
+
+    &.dashed-h {
+      border-bottom-width: 1px;
+      border-top-width: 1px;
+      height: calc(100% / 3);
+      left: 0;
+      top: calc(100% / 3);
+      width: 100%;
+    }
+
+    &.dashed-v {
+      border-left-width: 1px;
+      border-right-width: 1px;
+      height: 100%;
+      left: calc(100% / 3);
+      top: 0;
+      width: calc(100% / 3);
+    }
+  }
+
+  &-center {
+    display: block;
+    height: 0;
+    left: 50%;
+    opacity: 0.75;
+    position: absolute;
+    top: 50%;
+    width: 0;
+
+    &::before,
+    &::after {
+      background-color: #eee;
+      content: ' ';
+      display: block;
+      position: absolute;
+    }
+
+    &::before {
+      height: 1px;
+      left: -3px;
+      top: 0;
+      width: 7px;
+    }
+
+    &::after {
+      height: 7px;
+      left: 0;
+      top: -3px;
+      width: 1px;
+    }
+  }
+
+  &-face,
+  &-line,
+  &-point {
+    @apply absolute block w-full h-full opacity-20;
+  }
+
+  &-face {
+    @apply bg-white left-0 top-0;
+  }
+
+  &-line {
+    @apply h-6 w-6 bg-transparent;
+
+    &.line-e {
+      @apply -right-3 top-0;
+      cursor: ew-resize;
+    }
+
+    &.line-w {
+      @apply -left-3 top-0;
+      cursor: ew-resize;
+    }
+
+    &.line-n {
+      @apply -top-3 left-0;
+      cursor: ns-resize;
+    }
+
+    &.line-s {
+      @apply -bottom-3 left-0;
+      cursor: ns-resize;
+    }
+  }
+
+  &-point {
+    @apply bg-blue-500 h-4 w-4 rounded-lg opacity-100;
+
+    &.point-e {
+      @apply -right-2 top-1/2 -mt-2;
+      cursor: ew-resize;
+    }
+
+    &.point-w {
+      @apply -left-2 top-1/2 -mt-2;
+      cursor: ew-resize;
+    }
+
+    &.point-n {
+      @apply left-1/2 -top-2 -ml-2;
+      cursor: ns-resize;
+    }
+
+    &.point-s {
+      @apply left-1/2 -bottom-2 -ml-2;
+      cursor: ns-resize;
+    }
+
+    &.point-ne {
+      @apply -right-2 -top-2;
+      cursor: nesw-resize;
+    }
+
+    &.point-nw {
+      @apply -left-2 -top-2;
+      cursor: nwse-resize;
+    }
+
+    &.point-sw {
+      @apply -left-2 -bottom-2;
+      cursor: nesw-resize;
+    }
+
+    &.point-se {
+      @apply -right-3 -bottom-3 w-6 h-6;
+      cursor: nwse-resize;
+    }
+  }
+
+  &-invisible {
+    opacity: 0;
+  }
+
+  &-hide {
+    display: block;
+    height: 0;
+    position: absolute;
+    width: 0;
+  }
+
+  &-hidden {
+    display: none !important;
+  }
+
+  &-move {
+    cursor: move;
+  }
+
+  &-crop {
+    cursor: crosshair;
+  }
+
+  &-disabled &-drag-box,
+  &-disabled &-face,
+  &-disabled &-line,
+  &-disabled &-point {
+    cursor: not-allowed;
+  }
+}
