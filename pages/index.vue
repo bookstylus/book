@@ -7,9 +7,10 @@
         flex
         items-center
         justify-center
-        bg-gradient-to-t
-        from-gray-400
-        to-gray-200
+        h-screen
+        bg-gradient-to-tl
+        from-gray-900
+        to-gray-600
       "
     >
       <Flipbook
@@ -25,15 +26,22 @@
         @flip-right-start="onFlipRightStart"
         @flip-right-end="onFlipRightEnd"
       >
-        <div class="flipbook__footer">
-          <button class="button button--transparent" @click="flipbook.flipLeft">
-            <ChevronLeft :classes="'icon'" />
-          </button>
+        <div class="absolute inset-y-0 flex items-center z-10 -left-2">
           <button
-            class="button button--transparent"
+            class="bg-white/80 rounded-full p-2"
+            :class="{ hidden: !flipbook.canFlipLeft }"
+            @click="flipbook.flipLeft"
+          >
+            <Icon icon="heroicons-solid:chevron-left" class="w-8 h-8" />
+          </button>
+        </div>
+        <div class="absolute inset-y-0 flex items-center z-10 -right-2">
+          <button
+            class="bg-white/80 rounded-full p-2"
+            :class="{ hidden: !flipbook.canFlipRight }"
             @click="flipbook.flipRight"
           >
-            <ChevronRight :classes="'icon'" />
+            <Icon icon="heroicons-solid:chevron-right" class="w-8 h-8" />
           </button>
         </div>
       </Flipbook>
@@ -48,7 +56,6 @@ export default {
       social: {
         title: 'ConvitesOn',
         description: 'ConvitesOn - compartilhe seu sucesso',
-        url: '',
         image: 'images/1.jpg',
         twitter: 'conviteson',
       },

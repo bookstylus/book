@@ -27,7 +27,12 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/flipbook', mode: 'client' }, '~/plugins/jsonld'],
+  plugins: [
+    { src: '~/plugins/flipbook', mode: 'client' },
+    '~/plugins/jsonld',
+    '~/plugins/iconify',
+    { src: '~/plugins/pwa-update.js', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: ['~/components/', '~/components/utils/'],
