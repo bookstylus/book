@@ -30,18 +30,28 @@
           <button
             class="bg-white/80 rounded-full p-2"
             :class="{ hidden: !flipbook.canFlipLeft }"
+            aria-label="Flip Left"
             @click="flipbook.flipLeft"
           >
-            <Icon icon="heroicons-solid:chevron-left" class="w-8 h-8" />
+            <Icon
+              icon="heroicons-solid:chevron-left"
+              class="w-8 h-8"
+              aria-hidden="true"
+            />
           </button>
         </div>
         <div class="absolute inset-y-0 flex items-center z-10 -right-2">
           <button
             class="bg-white/80 rounded-full p-2"
             :class="{ hidden: !flipbook.canFlipRight }"
+            aria-label="Flip Right"
             @click="flipbook.flipRight"
           >
-            <Icon icon="heroicons-solid:chevron-right" class="w-8 h-8" />
+            <Icon
+              icon="heroicons-solid:chevron-right"
+              class="w-8 h-8"
+              aria-hidden="true"
+            />
           </button>
         </div>
       </Flipbook>
