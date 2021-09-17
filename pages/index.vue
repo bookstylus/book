@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-gray-500">
     <div
       class="
         w-full
@@ -17,7 +17,7 @@
         class="flipbook"
         :pages="pages"
         :pages-hi-res="pagesHiRes"
-        :zooms="[1, 3]"
+        :zooms="[1, 2]"
         :flip-duration="800"
         @flip-left-start="onFlipLeftStart"
         @flip-left-end="onFlipLeftEnd"
@@ -60,7 +60,7 @@ export default {
     pages() {
       const pages = [null]
       const images = this.images.map((image) => {
-        return this.$img(image, { width: '640', quality: 50, format: 'webp' })
+        return this.$img(image, { width: '512', quality: 50, format: 'webp' })
       })
       return pages.concat(images)
     },
