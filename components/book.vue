@@ -1,5 +1,5 @@
 <template>
-  <flipbook
+  <Flipbook
     ref="flipbook"
     v-slot="flipbook"
     class="flipbook book"
@@ -11,7 +11,7 @@
       <button ref="flipbookLeft" @click="flipbook.flipLeft"></button>
       <button ref="flipbookRight" @click="flipbook.flipRight"></button>
     </div>
-  </flipbook>
+  </Flipbook>
 </template>
 
 <script>
