@@ -72,12 +72,17 @@ export default {
       currentPage: 0,
       previousPage: 0,
       images: [
-        'images/1.jpg',
-        'images/2.jpg',
-        'images/3.jpg',
-        'images/4.jpg',
-        'images/5.jpg',
-        'images/6.jpg',
+        '202180282019/preview/MIOLO-1.jpg',
+        '202180282019/preview/MIOLO-2.jpg',
+        '202180282019/preview/MIOLO-3.jpg',
+         '202180282019/preview/MIOLO-4.jpg',
+         '202180282019/preview/MIOLO-5.jpg',
+        '202180282019/preview/MIOLO-6.jpg',
+                '202180282019/preview/MIOLO-7.jpg',
+                        '202180282019/preview/MIOLO-8.jpg',
+                                '202180282019/preview/MIOLO-9.jpg',
+                                                                '202180282019/preview/MIOLO-10.jpg',
+
       ],
     }
   },
