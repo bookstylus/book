@@ -1,35 +1,42 @@
 <template>
-  <div
-    class="
-      w-full
-      flex
-      items-center
-      justify-center
-      bg-gradient-to-t
-      from-gray-400
-      to-gray-200
-    "
-  >
-    <Flipbook
-      v-slot="flipbook"
-      ref=""
-      class="flipbook"
-      :pages="pages"
-      :flip-duration="500"
-      @flip-left-start="onFlipLeftStart"
-      @flip-left-end="onFlipLeftEnd"
-      @flip-right-start="onFlipRightStart"
-      @flip-right-end="onFlipRightEnd"
+  <div>
+    <div
+      class="
+        w-full
+        flex
+        items-center
+        justify-center
+        bg-gradient-to-t
+        from-gray-400
+        to-gray-200
+      "
     >
-      <div class="flipbook__footer">
-        <button class="button button--transparent" @click="flipbook.flipLeft">
-          <ChevronLeft :classes="'icon'" />
-        </button>
-        <button class="button button--transparent" @click="flipbook.flipRight">
-          <ChevronRight :classes="'icon'" />
-        </button>
-      </div>
-    </Flipbook>
+      <Flipbook
+        v-slot="flipbook"
+        ref="flipbook"
+        class="flipbook"
+        :pages="pages"
+        :pages-hi-res="pagesHiRes"
+        :zooms="[1, 3]"
+        :flip-duration="800"
+        @flip-left-start="onFlipLeftStart"
+        @flip-left-end="onFlipLeftEnd"
+        @flip-right-start="onFlipRightStart"
+        @flip-right-end="onFlipRightEnd"
+      >
+        <div class="flipbook__footer">
+          <button class="button button--transparent" @click="flipbook.flipLeft">
+            <ChevronLeft :classes="'icon'" />
+          </button>
+          <button
+            class="button button--transparent"
+            @click="flipbook.flipRight"
+          >
+            <ChevronRight :classes="'icon'" />
+          </button>
+        </div>
+      </Flipbook>
+    </div>
   </div>
 </template>
 
@@ -39,15 +46,35 @@ export default {
     return {
       currentPage: 0,
       previousPage: 0,
-      pages: [
-        null,
-        'https://images.pexels.com/photos/4380970/pexels-photo-4380970.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
-        'https://images.pexels.com/photos/2709385/pexels-photo-2709385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        'https://images.pexels.com/photos/2709385/pexels-photo-2709385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        'https://images.pexels.com/photos/3081752/pexels-photo-3081752.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        'https://images.pexels.com/photos/3083250/pexels-photo-3083250.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      images: [
+        'images/1.jpg',
+        'images/2.jpg',
+        'images/3.jpg',
+        'images/4.jpg',
+        'images/5.jpg',
+        'images/6.jpg',
       ],
     }
+  },
+  computed: {
+    pages() {
+      const pages = [null]
+      const images = this.images.map((image) => {
+        return this.$img(image, { width: '640', quality: 50, format: 'webp' })
+      })
+      return pages.concat(images)
+    },
+    pagesHiRes() {
+      const pages = [null]
+      const images = this.images.map((image) => {
+        return this.$img(image, {
+          width: '1024',
+          quality: 80,
+          format: 'webp',
+        })
+      })
+      return pages.concat(images)
+    },
   },
   methods: {
     onFlipLeftStart(page) {
@@ -85,9 +112,9 @@ export default {
   display: flex;
   flex-direction: column-reverse;
   height: 90vh;
+  width: 90vw;
   justify-content: center;
   position: relative;
-  width: 90vw;
 }
 .flipbook .bounding-box {
   box-shadow: 0px 50px 32px -40px rgba(0, 0, 0, 0.5),
