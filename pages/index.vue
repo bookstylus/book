@@ -25,17 +25,18 @@
         @flip-left-end="onFlipLeftEnd"
         @flip-right-start="onFlipRightStart"
         @flip-right-end="onFlipRightEnd"
+        @dblclick.native="zoomFlipbook"
       >
         <div class="absolute inset-y-0 flex items-center z-10 -left-2">
           <button
             class="bg-white/80 rounded-full p-2"
-            :class="{ hidden: !flipbook.canFlipLeft }"
+            :class="{ hidden: !flipbook.canFlipLeft || flipbook.canZoomOut }"
             aria-label="Flip Left"
             @click="flipbook.flipLeft"
           >
             <Icon
               icon="heroicons-solid:chevron-left"
-              class="w-8 h-8"
+              class="w-6 h-6 md:w-8 md:h-8"
               aria-hidden="true"
             />
           </button>
@@ -43,13 +44,13 @@
         <div class="absolute inset-y-0 flex items-center z-10 -right-2">
           <button
             class="bg-white/80 rounded-full p-2"
-            :class="{ hidden: !flipbook.canFlipRight }"
+            :class="{ hidden: !flipbook.canFlipRight || flipbook.canZoomOut }"
             aria-label="Flip Right"
             @click="flipbook.flipRight"
           >
             <Icon
               icon="heroicons-solid:chevron-right"
-              class="w-8 h-8"
+              class="w-6 h-6 md:w-8 md:h-8"
               aria-hidden="true"
             />
           </button>
@@ -113,6 +114,9 @@ export default {
     },
     onFlipRightEnd(page) {
       //   this.checkPage(page);
+    },
+    zoomFlipbook() {
+      this.$refs.flipbook.zoomIn()
     },
   },
 }
