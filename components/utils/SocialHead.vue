@@ -102,7 +102,7 @@ export default {
     photo1x1() {
       const width = 1200
       const height = 1200
-      const img = this.$img(this.image, {
+      const img = this.$img(this.social.image, {
         width,
         height,
         quality: 70,
@@ -113,7 +113,7 @@ export default {
     photo4x3() {
       const width = 1200
       const height = 900
-      const img = this.$img(this.image, {
+      const img = this.$img(this.social.image, {
         width,
         height,
         quality: 70,
@@ -124,7 +124,7 @@ export default {
     photo3x4() {
       const width = 1200
       const height = 1600
-      const img = this.$img(this.image, {
+      const img = this.$img(this.social.image, {
         width,
         height,
         quality: 70,
@@ -135,7 +135,7 @@ export default {
     photo() {
       const width = 1200
       const height = 600
-      const img = this.$img(this.image, {
+      const img = this.$img(this.social.image, {
         width,
         height,
         quality: 70,
@@ -160,7 +160,7 @@ export default {
           datePublished: new Date(),
           dateModified: new Date(),
           author: {
-            '@id': `${this.$config.baseURL}/#Autor`,
+            '@id': `${this.$config.baseURL}/#Author`,
           },
           publisher: {
             '@type': 'Organization',
@@ -179,10 +179,10 @@ export default {
           },
         },
         {
-          '@type': 'Autor',
-          '@id': `${this.$config.baseURL}/#Autor`,
+          '@type': 'Author',
+          '@id': `${this.$config.baseURL}/#Author`,
           name: this.social.name,
-          image: this.doctorphoto1x1,
+          image: this.photo1x1,
           url: `${this.$config.baseURL}${this.$route.path}`,
           sameAs: this.social.socials,
         },

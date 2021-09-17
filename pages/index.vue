@@ -1,5 +1,6 @@
 <template>
   <div class="bg-gray-500">
+    <SocialHead :social="social" />
     <div
       class="
         w-full
@@ -44,6 +45,13 @@
 export default {
   data() {
     return {
+      social: {
+        title: 'ConvitesOn',
+        description: 'ConvitesOn - compartilhe seu sucesso',
+        url: '',
+        image: 'images/1.jpg',
+        twitter: 'conviteson',
+      },
       currentPage: 0,
       previousPage: 0,
       images: [

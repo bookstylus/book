@@ -115,6 +115,9 @@ export default {
       ],
     },
   },
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'https://convites.pages.dev',
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
