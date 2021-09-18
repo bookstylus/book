@@ -157,8 +157,8 @@ export default {
           headline: this.social.title,
           description: this.social.description,
           image: [this.photo1x1, this.photo4x3, this.photo3x4],
-          datePublished: new Date(),
-          dateModified: new Date(),
+          datePublished: Date.now(),
+          dateModified: Date.now(),
           author: {
             '@id': `${this.$config.baseURL}/#Author`,
           },
@@ -167,9 +167,9 @@ export default {
             name: 'ConvitesOn',
             logo: {
               '@type': 'ImageObject',
-              url: 'https://google.com/logo.jpg',
+              url: '${this.$config.baseURL}/icon.png',
             },
-            url: 'https://conviteson.com/',
+            url: this.$config.baseURL,
             sameAs: [
               'https://www.facebook.com/convitesoncom/',
               'https://www.instagram.com/convitesoncom/',
