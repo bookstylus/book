@@ -157,8 +157,8 @@ export default {
           headline: this.social.title,
           description: this.social.description,
           image: [this.photo1x1, this.photo4x3, this.photo3x4],
-          datePublished: Date.now(),
-          dateModified: Date.now(),
+          datePublished: new Date(Date.now()),
+          dateModified: new Date(Date.now()),
           author: {
             '@id': `${this.$config.baseURL}/#Author`,
           },
